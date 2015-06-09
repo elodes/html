@@ -15,11 +15,14 @@ $phone = $_POST['phone'];
 $message = $_POST['message'];
 	
 // Create the email and send the message
-$to = 'erin@erinmakes.com'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-$email_subject = "erinmakes contact:  $name";
-$email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
-$headers = "From: noreply@erinmakes.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-$headers .= "Reply-To: $email_address";	
+$to = 'erin@erinmakes.com';
+$email_subject = "Contact:  $name";
+$email_body = "New message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+$headers = "From: noreply@erinmakes.com\r\n";
+$headers .= "Reply-To: $email_address\r\n";
+$headers .= "Return-Path: erin@erinmakes.com\r\n";
+$headers .= "CC: mike@erinmakes.com\r\n";
+$headers .= "BCC: hidden@erinmakes.com\r\n";
 mail($to,$email_subject,$email_body,$headers);
 return true;			
 ?>
